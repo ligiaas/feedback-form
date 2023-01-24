@@ -1,0 +1,8 @@
+{
+  "eslint.options": {
+    "overrideConfigFile": "eslintrc"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": { "source.fixAll": true },
+  "editor.formatOnSave": false
+}

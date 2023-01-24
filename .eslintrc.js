@@ -23,19 +23,41 @@ module.exports = {
   ],
   rules: {
     'react/jsx-uses-vars': 1,
-    'react/react-in-jsx-scope': 1,
+    'react/react-in-jsx-scope': 0,
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/no-unescaped-entities': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
+    "import/no-cycle": [
+      "error",
+      {
+        "maxDepth": 10,
+        "ignoreExternal": true
+      }
+    ],
     'react/jsx-one-expression-per-line': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'import/no-unresolved': 'off',
     '@typescript-eslint/no-unused-var': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
+    'react/function-component-definition': ['off', {
+      'namedComponents': ['function-declaration', 'function-expression', 'arrow-function', ['function-declaration', 'function-expression', 'arrow-function']],
+      'unnamedComponents': ['function-expression', 'arrow-function', ['function-expression', 'arrow-function']]
+    }],
+    'jsx-a11y/label-has-associated-control': [ 'error', {
+      'required': {
+        'some': [ 'nesting', 'id'  ]
+      }
+    }],
+    'jsx-a11y/label-has-for': [ 'error', {
+      'required': {
+        'some': [ 'nesting', 'id'  ]
+      }
+    }],
     'max-len': [
       'error',
       {
@@ -51,7 +73,6 @@ module.exports = {
         allowExpressions: true,
       },
     ],
-    'import/extensions': 'off',
   },
   ignorePatterns: ['build/**', 'node_modules/**'],
 }
