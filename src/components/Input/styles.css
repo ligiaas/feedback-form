@@ -1,0 +1,25 @@
+input {
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1rem;
+  transition: all 1s;
+  padding: 0.5rem;
+}
+
+input:focus {
+  border: 2px solid #e63888;
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+input.invalid {
+  border-color: #710e3c;
+  background-color: #fce8f2;
+}
+
+input:focus.invalid {
+  outline: yellowgreen;
+}
