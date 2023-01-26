@@ -15,6 +15,7 @@
 
 .FormInput {
   margin-bottom: 1rem;
+  width: -webkit-fill-available;
 }
 
 .FormInput label {
@@ -27,6 +28,6 @@
 .FormInput input {
   padding: 0.5rem 0.75rem;
   position: relative;
-  width: 100%;
+  width: inherit;
   font-size: 1rem;
 }
