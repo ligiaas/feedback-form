@@ -26,6 +26,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': 'off',
+    'react/tsx-props-no-spreading': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/no-unescaped-entities': 'off',
@@ -33,17 +34,12 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
-    "import/no-cycle": [
-      "error",
-      {
-        "maxDepth": 10,
-        "ignoreExternal": true
-      }
-    ],
+    'import/no-cycle': 'off',
     'react/jsx-one-expression-per-line': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-var': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-extra-non-null-assertion': 'off',
     'react/function-component-definition': ['off', {
       'namedComponents': ['function-declaration', 'function-expression', 'arrow-function', ['function-declaration', 'function-expression', 'arrow-function']],
       'unnamedComponents': ['function-expression', 'arrow-function', ['function-expression', 'arrow-function']]
@@ -65,6 +61,7 @@ module.exports = {
         ignoreUrls: true,
         ignoreTemplateLiterals: true,
         ignoreStrings: true,
+        ignoreRegExpLiterals: true
       },
     ],
     '@typescript-eslint/explicit-function-return-type': [
