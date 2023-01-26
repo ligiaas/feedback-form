@@ -1,4 +1,4 @@
-import { emailValidation } from '../constants/formValues';
+import { emailValidation } from 'constants/formValues';
 
 interface ValidateProps {
   email: string;
@@ -12,7 +12,7 @@ export function validate({ email, idEmail }: ValidateProps) {
   const validityState = input.validity;
   const validation = validateEmail(email);
 
-  if (validation !== null && validityState.valueMissing) {
+  if (validation === null && validityState.valueMissing) {
     input.setCustomValidity('You gotta fill this out, yo!');
   } else if (validityState.rangeUnderflow) {
     input.setCustomValidity('We need a higher number!');
