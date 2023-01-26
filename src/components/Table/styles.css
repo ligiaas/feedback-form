@@ -1,0 +1,35 @@
+.Table {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  border-collapse: collapse;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  max-width: 100%;
+  min-width: 400px;
+}
+
+tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+th {
+  background-color: #5555559e;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 0.5em 1em;
+}
+
+td {
+  border: 1px solid #ccc;
+  height: 18px;
+}
