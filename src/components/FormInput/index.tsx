@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { InputProps } from 'types/input';
-import FormContext from 'contexts/FormContext';
+import { FormContext } from 'contexts/FormContext';
 import './styles.css';
 
 const FormInput: React.FC<InputProps> = (props) => {

@@ -1,44 +1,29 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useContext } from 'react';
 import './styles.css';
 import * as Types from 'types/input';
-import FormContext from 'contexts/FormContext';
+import { FormContext } from 'contexts/FormContext';
+import { validate } from 'utils/formValidation';
 
 const Form: React.FC<Types.FormProps> = (props) => {
-  const { children, submit = () => {}, initialValues } = props;
-
-  const [form, setForm] = useState<Types.FormValues>(initialValues);
-
-  useEffect(() => {
-    setForm(initialValues);
-  }, [initialValues]);
-
-  const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setForm({
-      ...form,
-      [name]: value
-    });
-  };
-
+  const { children, submit = () => { }, initialValues } = props;
+  
+  const { form, setForm } = useContext(FormContext)
   const handleSubmit = () => {
     submit(form);
+    if (validate({ email: form.email, idEmail: 'email' }) !== null) {
+      console.log('form', form)
+    }
     setForm(initialValues);
   }
 
-  const contextValue = useMemo(() => (
-    { form, handleFormChange }
-  ), [form, handleFormChange]);
-
-
   return (
     <form className="Form">
-      <FormContext.Provider value={contextValue}>
-        {children}
-      </FormContext.Provider>
-
-      <button type="button" onClick={handleSubmit}>
-        Submit
-      </button>
+      {children}
+      <div className="Button">
+        <button type="button" onClick={handleSubmit}>
+          Enviar
+        </button>
+      </div>
     </form>
   );
 }
