@@ -13,13 +13,14 @@ export interface FormValues {
   [name: string]: string;
 }
 
+export interface FormContextValue {
+  form: FormValues;
+  handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setForm: (form: FormValues) => void;
+}
+
 export interface FormProps {
   children: React.ReactNode;
   submit: (form: FormValues) => void;
   initialValues: FormValues;
-}
-
-export interface FormContextValue {
-  form: FormValues;
-  handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
