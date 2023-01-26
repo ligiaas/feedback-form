@@ -1,46 +1,46 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './styles.css';
-import TextField from '../TextField';
-import { validate } from '../../utils/formValidation';
+import * as Types from 'types/input';
+import FormContext from 'contexts/FormContext';
 
-const Form: React.FC = () => {
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    console.log('event', e);
-    const target = e.target as typeof e.target & {
-      email: { id: string; value: string };
-      name: { id: string; value: string };
-    };
-    const email = target.email.value; // typechecks!
-    const idEmail = target.email.id;
-    const name = target.name.value;
-    const idName = target.name.id;
+const Form: React.FC<Types.FormProps> = (props) => {
+  const { children, submit = () => {}, initialValues } = props;
 
-    const emailValid = validate({ email, idEmail });
+  const [form, setForm] = useState<Types.FormValues>(initialValues);
 
-    if (emailValid !== null) {
-      console.log('email ', email);
-    }
+  useEffect(() => {
+    setForm(initialValues);
+  }, [initialValues]);
+
+  const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setForm({
+      ...form,
+      [name]: value
+    });
   };
 
+  const handleSubmit = () => {
+    submit(form);
+    setForm(initialValues);
+  }
+
+  const contextValue = useMemo(() => (
+    { form, handleFormChange }
+  ), [form, handleFormChange]);
+
+
   return (
-    <form onSubmit={handleSubmit}>
-      <TextField
-        id="name"
-        label="Nome completo"
-        name="name"
-        placeholder="John Smith"
-        required
-      />
-      <TextField
-        id="email"
-        label="E-mail"
-        name="email"
-        placeholder="example@example.com"
-      />
-      <input type="submit" value="Enviar" />
+    <form className="Form">
+      <FormContext.Provider value={contextValue}>
+        {children}
+      </FormContext.Provider>
+
+      <button type="button" onClick={handleSubmit}>
+        Submit
+      </button>
     </form>
   );
-};
+}
 
 export default Form;

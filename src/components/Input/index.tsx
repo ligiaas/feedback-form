@@ -1,5 +1,5 @@
 import './styles.css';
-import * as Types from '../../types/input';
+import * as Types from 'types/input';
 
 export const Input: React.FC<Types.InputProps> = ({
   id,
